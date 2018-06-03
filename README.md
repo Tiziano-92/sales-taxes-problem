@@ -5,7 +5,7 @@ This project contains the solution (implemented in Java language) for the Sales 
 1. Clone this repo.
 
    ```
-   https://gitlab.com/tiziano92/sales-taxes-problem.git
+   git clone https://gitlab.com/tiziano92/sales-taxes-problem.git
    ```
 2. Compile this project locally from the command line.
 
