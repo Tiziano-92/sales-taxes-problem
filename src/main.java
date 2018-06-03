@@ -1,8 +1,8 @@
 import java.math.BigDecimal;
 
-import enities.ImportedGood;
-import enities.NonImportedGood;
-import enities.Receipt;
+import entities.ImportedGood;
+import entities.NonImportedGood;
+import entities.Receipt;
 import good_types.GoodType;
 
 public class main {
