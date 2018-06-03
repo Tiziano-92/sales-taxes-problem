@@ -55,7 +55,7 @@ public class Receipt {
 	 * @return
 	 */
 	public BigDecimal computeTotalSalesTax(){
-		for (Item item : receipt){
+		for (Item item : this.receipt){
 			this.setTotalSalesTax(this.totalSalesTax.add((item.getSalesTax()).multiply(new BigDecimal(item.getQuantity()))));
 		}
 		return this.totalSalesTax;
@@ -66,8 +66,8 @@ public class Receipt {
 	 * @return
 	 */
 	public BigDecimal computeTotalAmount(){
-		for (Item item : receipt){
-			//item.setPrice(item.getPrice().multiply(new BigDecimal(item.getQuantity())));
+		for (Item item : this.receipt){
+			item.setPrice(item.getPrice().multiply(new BigDecimal(item.getQuantity())));
 			this.setTotalAmount(this.totalAmount.add((item.getPrice())));
 		}
 		return this.totalAmount;
@@ -78,7 +78,7 @@ public class Receipt {
 	 * Clean the receipt
 	 */
 	public void clean(){
-		receipt.clear();
+		this.receipt.clear();
 		this.totalSalesTax = BigDecimal.ZERO;
 		this.totalAmount = BigDecimal.ZERO;
 	}
@@ -87,8 +87,7 @@ public class Receipt {
 	public String toString() {
 		String output = "";
 
-		for (Item item : receipt){
-			item.setPrice(item.getPrice().multiply(new BigDecimal(item.getQuantity())));
+		for (Item item : this.receipt){
 			output += item.toString() + "\n";
 		}
 		output += "Sales Taxes: "+this.computeTotalSalesTax() + "\n" + "Total: "+this.computeTotalAmount();
