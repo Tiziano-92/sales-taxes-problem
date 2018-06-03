@@ -27,7 +27,7 @@ public class Receipt {
 	}
 
 	/**
-	 * Getter for the totalSalesTax
+	 * Setter for the totalSalesTax
 	 * @param totalSalesTax
 	 */
 	public void setTotalSalesTax(BigDecimal totalSalesTax) {
@@ -35,7 +35,7 @@ public class Receipt {
 	}
 
 	/**
-	 * Getter for the totalAmount
+	 * Setter for the totalAmount
 	 * @param totalAmount
 	 */
 	public void setTotalAmount(BigDecimal totalAmount) {
@@ -67,8 +67,7 @@ public class Receipt {
 	 */
 	public BigDecimal computeTotalAmount(){
 		for (Item item : this.receipt){
-			item.setPrice(item.getPrice().multiply(new BigDecimal(item.getQuantity())));
-			this.setTotalAmount(this.totalAmount.add((item.getPrice())));
+			this.setTotalAmount(this.totalAmount.add((item.getPrice().multiply(new BigDecimal(item.getQuantity())))));
 		}
 		return this.totalAmount;
 	}
@@ -94,7 +93,4 @@ public class Receipt {
 
 		return output;
 	}
-
-
-
 }

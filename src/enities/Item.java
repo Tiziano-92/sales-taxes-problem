@@ -126,7 +126,7 @@ public abstract class Item {
 	 */
 	@Override
 	public String toString() {
-		return this.quantity+ " "+this.description + ": "+ this.getPrice();
+		return this.quantity+ " "+this.description + ": "+ (this.getPrice().multiply(new BigDecimal(this.getQuantity())));
 	}
 
 }
