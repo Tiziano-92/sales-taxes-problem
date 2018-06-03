@@ -17,6 +17,7 @@ public class ImportedGood extends Item{
 	 */
 	public ImportedGood(String description, int quantity, BigDecimal price, GoodType goodtype) {
 		super(description, quantity, price, goodtype);
+		this.computePrice();
 	}
 
 	/**
@@ -27,42 +28,47 @@ public class ImportedGood extends Item{
 	 */
 	public ImportedGood(String description, int quantity, BigDecimal price) {
 		super(description, quantity, price);
+		this.computePrice();
 	}
 
 	/**
 	 * Compute the price of the Imported Good, by checking if it is needed to
 	 * apply the BASIC_SALE_TAX to the Item or not
+	 *
+	 * @return
 	 */
-	public void computePrice(){
+	public BigDecimal computePrice(){
 		switch (this.getGoodtype()) {
         case BOOK:
         case FOOD:
         case MEDICAL_PRODUCT:
         	this.computeSaleTax();
         	this.setPrice(this.getPrice().multiply(new BigDecimal(this.getQuantity())));
-        	break;
+        	return this.getPrice();
         case OTHER:
         default:
         	this.computeSaleTax();
         	this.setPrice(this.getPrice().add(this.getSalesTax()));
-        	break;
+        	return this.getPrice();
 		}
 	}
 
+
 	/**
 	 * Compute the sale tax of the Imported Good
+	 * @return
 	 */
-	public void computeSaleTax(){
+	public BigDecimal computeSaleTax(){
 		switch (this.getGoodtype()) {
 		case BOOK:
 		case FOOD:
 		case MEDICAL_PRODUCT:
 			this.setSalesTax(this.getPrice().multiply(new BigDecimal(IMPORT_DUTY_TAX)).setScale(2, BigDecimal.ROUND_UP));
-			break;
+			return this.getSalesTax();
 		case OTHER:
 		default:
 			this.setSalesTax(this.getPrice().multiply(new BigDecimal(IMPORT_DUTY_BASIC_SALE_TAX)).setScale(2, BigDecimal.ROUND_UP));
-			break;
+			return this.getSalesTax();
 		}
 	}
 }

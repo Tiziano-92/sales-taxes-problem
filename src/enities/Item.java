@@ -129,10 +129,4 @@ public abstract class Item {
 		return this.quantity+ " "+this.description + ": "+ this.price;
 	}
 
-
-
-
-
-
-
 }
