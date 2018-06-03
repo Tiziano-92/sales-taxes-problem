@@ -126,7 +126,7 @@ public abstract class Item {
 	 */
 	@Override
 	public String toString() {
-		return this.quantity+ " "+this.description + ": "+ this.price;
+		return this.quantity+ " "+this.description + ": "+ this.getPrice();
 	}
 
 }

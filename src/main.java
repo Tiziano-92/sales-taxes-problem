@@ -35,8 +35,21 @@ public class main {
 		System.out.println("\nOutput 2:");
 		System.out.println(receipt);
 
+		receipt.clean();
 
 
+		ImportedGood imp3 = new ImportedGood("imported bottle of perfume", 1, new BigDecimal("27.99"));
+		NonImportedGood nonig4 = new NonImportedGood("bottle of perfume", 1, new BigDecimal("18.99"));
+		NonImportedGood nonig5 = new NonImportedGood("packet of headache pills", 1, new BigDecimal("9.75"), GoodType.MEDICAL_PRODUCT);
+		ImportedGood imp4 = new ImportedGood("imported box of chocolates", 3, new BigDecimal("11.25"), GoodType.FOOD);
+
+		receipt.addItem(imp3);
+		receipt.addItem(nonig4);
+		receipt.addItem(nonig5);
+		receipt.addItem(imp4);
+
+		System.out.println("\nOutput 3:");
+		System.out.println(receipt);
 
 
 	}

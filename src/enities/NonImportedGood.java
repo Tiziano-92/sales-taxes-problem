@@ -2,6 +2,7 @@ package enities;
 
 import java.math.BigDecimal;
 import good_types.GoodType;
+import helper.Helper;
 
 public class NonImportedGood extends Item{
 
@@ -40,7 +41,6 @@ public class NonImportedGood extends Item{
         case BOOK:
         case FOOD:
         case MEDICAL_PRODUCT:
-        	this.setPrice(this.getPrice().multiply(new BigDecimal(this.getQuantity())));
         	return this.getPrice();
         case OTHER:
         default:
@@ -61,7 +61,7 @@ public class NonImportedGood extends Item{
 			return this.getSalesTax();
 		case OTHER:
 		default:
-			this.setSalesTax(this.getPrice().multiply(new BigDecimal(BASIC_SALE_TAX)).setScale(2, BigDecimal.ROUND_UP));
+			this.setSalesTax(Helper.roundUpTo(this.getPrice().multiply(new BigDecimal(BASIC_SALE_TAX)).setScale(2, BigDecimal.ROUND_UP), new BigDecimal("0.05")));
 			return this.getSalesTax();
 		}
 	}
