@@ -33,4 +33,3 @@ This project contains the solution (implemented in Java language) for the Sales 
    ```
    cd sales-taxes-problem
    ```
-3. Visit the application at [http://localhost:8080](http://localhost:8080).
