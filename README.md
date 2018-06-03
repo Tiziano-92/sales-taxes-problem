@@ -28,8 +28,9 @@ This project contains the solution (implemented in Java language) for the Sales 
    ```
    git clone https://gitlab.com/tiziano92/sales-taxes-problem.git
    ```
-2. Go into the project's folder
+2. Go into the project's folder.
 
    ```
    cd sales-taxes-problem
    ```
+3. 
