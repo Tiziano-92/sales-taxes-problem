@@ -1,7 +1,7 @@
 # Sales taxes solution
 This project contains the solution (implemented in Java language) for the Sales Taxes problem which can be viewed at this link: https://github.com/xpeppers/sales-taxes-problem/blob/master/README.md
 
-# Requirements
+## Requirements
 
 1.  [Java JDK >=8](http://www.oracle.com/technetwork/java/javase/downloads/index.html). **Not the JRE**
 
@@ -22,7 +22,7 @@ This project contains the solution (implemented in Java language) for the Sales 
     ```
     then double check that `java` is referring to the command for the `jdk` and not the `jre`.
 
-# Run Locally
+### Run Locally
 1. Clone this repo.
 
    ```
