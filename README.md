@@ -22,7 +22,7 @@ This project contains the solution (implemented in Java language) for the Sales 
     ```
     then double check that `java` is referring to the command for the `jdk` and not the `jre`.
 
-### Run Locally
+## Run Locally
 1. Clone this repo.
 
    ```
