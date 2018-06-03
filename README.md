@@ -34,3 +34,24 @@ This project contains the solution (implemented in Java language) for the Sales 
    cd sales-taxes-problem
    ```
 3. 
+
+## Directory Tree
+
+```
+./src
+├── entities
+│   ├── ImportedGood.java
+│   ├── Item.java
+│   ├── NonImportedGood.java
+│   ├── Receipt.java
+├── good_types
+│   ├── GoodType.java
+├── helper
+│   ├── Helper.java
+├── test
+│   ├── 
+└── main.java
+    
+
+4 directories, 7 files
+```
