@@ -4,11 +4,12 @@ import entities.ImportedGood;
 import entities.NonImportedGood;
 import entities.Receipt;
 import entities.ShoppingBasket;
+import exceptions.GoodNotFoundException;
 import good_types.GoodType;
 
 public class main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws GoodNotFoundException {
 
 		Receipt receipt = new Receipt();
 
