@@ -52,7 +52,7 @@ This project contains the solution (implemented in Java language) for the Sales 
 4.  Run the program
 
     ```bash
-        > ant execute.main
+        > ant execute.TestRunner
     ```
 
 ## Directory Tree
@@ -60,18 +60,27 @@ This project contains the solution (implemented in Java language) for the Sales 
 ```
 ./src
 ├── entities
+│   ├── Good.java
 │   ├── ImportedGood.java
-│   ├── Item.java
 │   ├── NonImportedGood.java
 │   ├── Receipt.java
+│   ├── ShoppingBasket.java
+├── exceptions
+│   ├── GoodNotFoundException.java
+│   ├── ShoppingBasketNotFoundException.java
 ├── good_types
 │   ├── GoodType.java
 ├── helper
 │   ├── Helper.java
+├── interfaces
+│   ├── GoodInterface.java
+│   ├── ReceiptInterface.java
+│   ├── ShoppingBasketInterface.java
 ├── test
-│   ├── 
-└── main.java
+    ├── ReceiptJUnit.java
+    ├── TestRunner.java
+    ├── result.txt
     
 
-4 directories, 7 files
+6 directories, 15 files
 ```
