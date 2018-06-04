@@ -22,18 +22,33 @@ This project contains the solution (implemented in Java language) for the Sales 
     ```
     then double check that `java` is referring to the command for the `jdk` and not the `jre`.
 
+2.  [Apache Ant] (http://ant.apache.org/)
+    
+    Ensure that the `ant` command is in the PATH. For example:
+    ```bash
+        > ant -version 
+        Apache Ant(TM) version 1.10.1"
+    ```
+
 ## Run Locally
-1. Clone this repo.
+1.  Clone this repo.
 
-   ```
-   git clone https://gitlab.com/tiziano92/sales-taxes-problem.git
-   ```
-2. Go into the project's folder.
+    ```
+    git clone https://gitlab.com/tiziano92/sales-taxes-problem.git
+    ```
+2.  Go into the project's folder.
 
-   ```
-   cd sales-taxes-problem
-   ```
-3. 
+    ```
+    cd sales-taxes-problem
+    ```
+    
+3.  Compile the project.
+
+    ```
+    ant compile
+    ```
+    
+4.  Run the program
 
 ## Directory Tree
 
