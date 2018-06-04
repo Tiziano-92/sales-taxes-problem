@@ -7,35 +7,112 @@
 package entities;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import exceptions.GoodNotFoundException;
 
 public class ShoppingBasket {
 
-	public List<Good> shoppingBasket;
+	private Map<String,Good> shoppingBasket;
 	private BigDecimal totalSalesTax;
 	private BigDecimal totalAmount;
 	private String idBasket;
 
-
 	/**
-	 *
+	 * Constructor without parameters
 	 */
 	public ShoppingBasket() {
-		this.shoppingBasket = new ArrayList<Good>();
+		this.shoppingBasket = new LinkedHashMap<String,Good>();
 		this.totalSalesTax = BigDecimal.ZERO;
 		this.totalAmount = BigDecimal.ZERO;
 	}
 
 	/**
-	 *
+	 * Constructor with the id of the Basket
 	 * @param idBasket
 	 */
 	public ShoppingBasket(String idBasket) {
-		this.shoppingBasket = new ArrayList<Good>();
+		this.shoppingBasket = new LinkedHashMap<String,Good>();
 		this.totalSalesTax = BigDecimal.ZERO;
 		this.totalAmount = BigDecimal.ZERO;
 		this.idBasket = idBasket;
+	}
+
+	/**
+	 * Method to add a good to the basket
+	 * @param good
+	 * @return
+	 */
+	public boolean addGood(Good good){
+
+		Good g1 = good;
+
+		if (good instanceof ImportedGood){
+			g1 = (ImportedGood) good;
+		}
+		else{
+			g1 = (NonImportedGood) good;
+		}
+
+		if(this.shoppingBasket.containsKey(good.getIdGood())){
+			g1.setQuantity(g1.getQuantity() + good.getQuantity());
+			g1.computePrice();
+			this.setTotalSalesTax(this.totalSalesTax.add((g1.getSalesTax()).multiply(new BigDecimal(g1.getQuantity()))));
+			this.setTotalAmount(this.totalAmount.add((g1.getPrice().multiply(new BigDecimal(g1.getQuantity())))));
+			return true;
+		}
+		else {
+			g1.computePrice();
+			this.shoppingBasket.put(g1.getDescription(),g1);
+			this.setTotalSalesTax(this.totalSalesTax.add((g1.getSalesTax()).multiply(new BigDecimal(g1.getQuantity()))));
+			this.setTotalAmount(this.totalAmount.add((g1.getPrice().multiply(new BigDecimal(g1.getQuantity())))));
+			return false;
+		}
+	}
+
+	/**
+	 * Count the number of goods in the shopping basket
+	 * @return
+	 */
+	public int goodCount(){
+		return this.shoppingBasket.size();
+	}
+
+	/**
+	 * Return the good from the shopping basket, given the idName
+	 * @param idName
+	 * @return
+	 * @throws GoodNotFoundException
+	 */
+	public Good getGoodFromShoppingBasket(String idName) throws GoodNotFoundException {
+		if(this.shoppingBasket.containsKey(idName)){
+			return this.shoppingBasket.get(idName);
+		}else {
+			throw new GoodNotFoundException("Good with ID "+idName+" is not Found.");
+		}
+	}
+
+	/**
+	 * Remove a good from the shopping basket, given the idName
+	 * @param idName
+	 * @return
+	 * @throws GoodNotFoundException
+	 */
+	public boolean removeGood(String idName) throws GoodNotFoundException {
+		if(this.shoppingBasket.containsKey(idName)){
+			this.shoppingBasket.remove(idName);
+			return true;
+		}else throw new GoodNotFoundException("Good with ID "+idName+" is not Found.");
+	}
+
+	/**
+	 * Clean the Basket
+	 */
+	public void cleanBasket(){
+		this.shoppingBasket.clear();
+		this.totalSalesTax = BigDecimal.ZERO;
+		this.totalAmount = BigDecimal.ZERO;
 	}
 
 	/**
@@ -55,7 +132,7 @@ public class ShoppingBasket {
 	}
 
 	/**
-	 *
+	 * Getter for the id of the basket
 	 * @return
 	 */
 	public String getIdBasket() {
@@ -63,7 +140,7 @@ public class ShoppingBasket {
 	}
 
 	/**
-	 *
+	 * Setter for the id of the basket
 	 * @param idBasket
 	 */
 	public void setIdBasket(String idBasket) {
@@ -86,33 +163,15 @@ public class ShoppingBasket {
 		this.totalAmount = totalAmount;
 	}
 
-	/**
-	 * Add an Item to the receipt
-	 * @param item
-	 */
-	public void addItem(Good item){
-		this.setTotalSalesTax(this.totalSalesTax.add((item.getSalesTax()).multiply(new BigDecimal(item.getQuantity()))));
-		this.setTotalAmount(this.totalAmount.add((item.getPrice().multiply(new BigDecimal(item.getQuantity())))));
-		item.setSalesTax((item.getSalesTax()).multiply(new BigDecimal(item.getQuantity())));
-		this.shoppingBasket.add(item);
-	}
-
-	/**
-	 * Clean the receipt
-	 */
-	public void clean(){
-		this.shoppingBasket.clear();
-		this.totalSalesTax = BigDecimal.ZERO;
-		this.totalAmount = BigDecimal.ZERO;
-	}
 
 	@Override
 	public String toString() {
 		String output = "";
 
-		for (Good item : this.shoppingBasket){
-			output += item.toString() + "\n";
-		}
+		for (Map.Entry<String, Good> sb: this.shoppingBasket.entrySet()) {
+			output += sb.getValue().toString() + "\n";
+        }
+
 		output += "Sales Taxes: "+this.getTotalSalesTax() + "\n" + "Total: "+this.getTotalAmount();
 
 		return output;

@@ -1,3 +1,8 @@
+/**
+ * @author	Tiziano Antico
+ * This class is used to create an interface for the Receipt class
+ */
+
 package interfaces;
 
 import entities.ShoppingBasket;

@@ -17,8 +17,10 @@ public class ImportedGood extends Good implements GoodInterface {
 	final String IMPORT_DUTY_TAX = "0.05"; // which corresponds to a discount of 5 %
 	final String IMPORT_DUTY_BASIC_SALE_TAX = "0.15"; // which corresponds to a discount of 15 % (import duty tax + basic sale tax)
 
+	public ImportedGood(){}
+
 	/**
-	 * Constructor for a ImportedGood item, given also the type of the Good
+	 * Constructor for an Item, given also the type of the Item
 	 * @param description
 	 * @param quantity
 	 * @param price
@@ -26,19 +28,41 @@ public class ImportedGood extends Good implements GoodInterface {
 	 */
 	public ImportedGood(String description, int quantity, BigDecimal price, GoodType goodtype) {
 		super(description, quantity, price, goodtype);
-		this.computePrice();
 	}
 
 	/**
-	 * Constructor for a ImportedGood item, without giving the type of the Item
+	 * Constructor for an Item, giving the type of the Item and giving the id
+	 * @param id
+	 * @param description
+	 * @param quantity
+	 * @param price
+	 * @param goodtype
+	 */
+	public ImportedGood(String id, String description, int quantity, BigDecimal price, GoodType goodtype) {
+		super(id, description, quantity, price, goodtype);
+	}
+
+	/**
+	 * Constructor for an Item, without giving the type of the Item
 	 * @param description
 	 * @param quantity
 	 * @param price
 	 */
 	public ImportedGood(String description, int quantity, BigDecimal price) {
 		super(description, quantity, price);
-		this.computePrice();
 	}
+
+	/**
+	 * Constructor for an Item, without giving the type of the Item and giving the id
+	 * @param id
+	 * @param description
+	 * @param quantity
+	 * @param price
+	 */
+	public ImportedGood(String id, String description, int quantity, BigDecimal price) {
+		super(id, description, quantity, price);
+	}
+
 
 	/**
 	 * Compute the price of the Imported Good, by checking if it is needed to

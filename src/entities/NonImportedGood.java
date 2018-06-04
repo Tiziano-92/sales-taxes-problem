@@ -15,7 +15,7 @@ public class NonImportedGood extends Good{
 	final String BASIC_SALE_TAX = "0.10"; // which corresponds to a discount of 10 %
 
 	/**
-	 * Constructor for a NonImportedGood item, given also the type of the Good
+	 * Constructor for an Item, given also the type of the Item
 	 * @param description
 	 * @param quantity
 	 * @param price
@@ -23,18 +23,39 @@ public class NonImportedGood extends Good{
 	 */
 	public NonImportedGood(String description, int quantity, BigDecimal price, GoodType goodtype) {
 		super(description, quantity, price, goodtype);
-		this.computePrice();
 	}
 
 	/**
-	 * Constructor for a NonImportedGood item, without giving the type of the Item
+	 * Constructor for an Item, giving the type of the Item and giving the id
+	 * @param id
+	 * @param description
+	 * @param quantity
+	 * @param price
+	 * @param goodtype
+	 */
+	public NonImportedGood(String id, String description, int quantity, BigDecimal price, GoodType goodtype) {
+		super(id, description, quantity, price, goodtype);
+	}
+
+	/**
+	 * Constructor for an Item, without giving the type of the Item
 	 * @param description
 	 * @param quantity
 	 * @param price
 	 */
 	public NonImportedGood(String description, int quantity, BigDecimal price) {
 		super(description, quantity, price);
-		this.computePrice();
+	}
+
+	/**
+	 * Constructor for an Item, without giving the type of the Item and giving the id
+	 * @param id
+	 * @param description
+	 * @param quantity
+	 * @param price
+	 */
+	public NonImportedGood(String id, String description, int quantity, BigDecimal price) {
+		super(id, description, quantity, price);
 	}
 
 	/**

@@ -12,13 +12,14 @@ import good_types.GoodType;
 public abstract class Good {
 
 	private String description;
+	private String idGood;
 	private int quantity;
 	private BigDecimal price;
 	private BigDecimal salesTax;
 	private GoodType goodtype;
-	private String idGood;
 
-	public Good(){}
+
+	public Good(){};
 
 	/**
 	 * Constructor for an Item, given also the type of the Item
@@ -49,7 +50,7 @@ public abstract class Good {
 		this.quantity = quantity;
 		this.price = price;
 		this.salesTax = BigDecimal.ZERO;
-		this.goodtype = GoodType.OTHER;
+		this.goodtype = goodtype;
 	}
 
 	/**
@@ -82,6 +83,8 @@ public abstract class Good {
 		this.goodtype = GoodType.OTHER;
 	}
 
+	public abstract BigDecimal computePrice();
+	public abstract BigDecimal computeSaleTax();
 
 	/**
 	 * Getter for the description of the Item
@@ -162,6 +165,23 @@ public abstract class Good {
 	public void setGoodtype(GoodType goodtype) {
 		this.goodtype = goodtype;
 	}
+
+	/**
+	 * Getter for the idGood
+	 * @return
+	 */
+	public String getIdGood() {
+		return idGood;
+	}
+
+	/**
+	 * Setter for the idGood
+	 * @param idGood
+	 */
+	public void setIdGood(String idGood) {
+		this.idGood = idGood;
+	}
+
 
 	/**
 	 * ToString method for the Item object

@@ -1,6 +1,11 @@
+/**
+ * @author	Tiziano Antico
+ * This class contains and manage all the shopping baskets of the application
+ */
+
 package entities;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import exceptions.ShoppingBasketNotFoundException;
@@ -15,7 +20,7 @@ public class Receipt implements ReceiptInterface {
 	 * Constructor method for Receipt without parameters
 	 */
 	public Receipt(){
-		receipt = new HashMap<String,ShoppingBasket>();
+		receipt = new LinkedHashMap<String,ShoppingBasket>();
 	}
 
 	/**
@@ -24,7 +29,7 @@ public class Receipt implements ReceiptInterface {
 	 */
 	public Receipt(String idName){
 		this.idName = idName;
-		receipt = new HashMap<String,ShoppingBasket>();
+		receipt = new LinkedHashMap<String,ShoppingBasket>();
 	}
 
 	/**
