@@ -33,22 +33,27 @@ This project contains the solution (implemented in Java language) for the Sales 
 ## Run Locally
 1.  Clone this repo.
 
+    ```bash
+        > git clone https://gitlab.com/tiziano92/sales-taxes-problem.git
     ```
-    git clone https://gitlab.com/tiziano92/sales-taxes-problem.git
-    ```
+
 2.  Go into the project's folder.
 
-    ```
-    cd sales-taxes-problem
+    ```bash
+        > cd sales-taxes-problem
     ```
     
 3.  Compile the project.
 
-    ```
-    ant compile
+    ```bash
+        > ant compile
     ```
     
 4.  Run the program
+
+    ```bash
+        > ant execute.main
+    ```
 
 ## Directory Tree
 
