@@ -9,3 +9,6 @@ bin/
 
 # JDT-specific (Eclipse Java Development Tools)     
 .classpath
+
+# Eclipse settings
+.settings
