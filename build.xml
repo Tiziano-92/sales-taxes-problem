@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- ================================= 
+<!-- =================================
     Resolution of the Sales Taxes Problem
     Description: ANT build script to compile the program
 -->
@@ -42,11 +42,11 @@
 			</fileset>
 		</copy>
 	</target>
-	
-	<target name="execute.main">
-		<echo message="Executing main: you will see the output of the program" />
-		<java classname="main" classpath="${build.dir}">
+
+	<target name="execute.TestRunner">
+		<echo message="Executing test: you will see the output of the program" />
+		<java classname="TestRunner" classpath="${build.dir}">
 		</java>
 	</target>
-	
+
 </project>
