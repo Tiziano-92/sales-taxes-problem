@@ -64,7 +64,7 @@ public class ShoppingBasket {
 		}
 		else {
 			g1.computePrice();
-			this.shoppingBasket.put(g1.getIdGood(),g1);
+			this.shoppingBasket.put(g1.getDescription(),g1);
 			this.setTotalSalesTax(this.totalSalesTax.add((g1.getSalesTax()).multiply(new BigDecimal(g1.getQuantity()))));
 			this.setTotalAmount(this.totalAmount.add((g1.getPrice().multiply(new BigDecimal(g1.getQuantity())))));
 			return false;
@@ -102,8 +102,8 @@ public class ShoppingBasket {
 	public boolean removeGood(String idName) throws GoodNotFoundException {
 		if(this.shoppingBasket.containsKey(idName)){
 			Good g1 = this.shoppingBasket.get(idName);
-			this.setTotalSalesTax(this.totalSalesTax.subtract((g1.getSalesTax()).multiply(new BigDecimal(g1.getQuantity()))));
-			this.setTotalAmount(this.totalAmount.subtract((g1.getPrice().multiply(new BigDecimal(g1.getQuantity())))));
+			this.setTotalSalesTax(this.totalSalesTax.add((g1.getSalesTax()).multiply(new BigDecimal(g1.getQuantity()))));
+			this.setTotalAmount(this.totalAmount.add((g1.getPrice().multiply(new BigDecimal(g1.getQuantity())))));
 			this.shoppingBasket.remove(idName);
 			return true;
 		}else throw new GoodNotFoundException("Good with ID "+idName+" is not Found.");
