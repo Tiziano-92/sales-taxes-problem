@@ -1,35 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- ================================= 
-    Introduction to Service Design and Engineering Laboratory
-    Description: ANT build script for the session on JAXB and Dozer 
-    Author: cdparra
-    
-    Notes: 
-    
-    * This build file includes targets to download and install in your local project the Apache IVY jar
-    * IVY is used to manage dependencies on projects (e.g., jaxb libraries, jackson libraries for json, etc.) 
-    * 
-       TO USE IVY IN YOUR PROJECTS IN ORDER TO GET MANAGE DEPENDENCIES, MAKE SURE THE FOLLOWING LINES ARE
-       IN YOUR BUILD.XML UNTILL 'IVY-END-LINE'
-       
-       # The target "download-ivy" and "install-ivy" will download the ivy jar and place it in the "ivy" folder
-       # 
+    Resolution of the Sales Taxes Problem
+    Description: ANT build script to compile the program
 -->
 <project name="sales-taxes-problem" default="compile" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
 
-
-
-	<!-- PART 2: General properties definitions -->
+	<!-- PART 1: General properties definitions -->
 	<property name="build.dir" value="build" />
 	<property name="src.dir" value="src" />
 	<property name="lib.dir" value="lib" />
-	<!-- <property name="xjc.package" value="people.generated" /> -->
-
-	<!-- ================================= 
-	          target: resolve downloads the dependencies to your lib folder              
-	         ================================= -->
-
-
 
 	<path id="run.path.id">
 		<fileset dir="${build.dir}">
@@ -38,7 +17,7 @@
 		</fileset>
 	</path>
 
-	<!-- PART 3: compilation and execution targets for this session -->
+	<!-- PART 2: compilation and execution targets for this session -->
 	<target name="init">
 		<echo message="Init has been called" />
 		<mkdir dir="${build.dir}" />
@@ -52,7 +31,6 @@
 		<delete dir="${src.dir}/${xjc.package}" />
 		<echo message="${src.dir}/${xjc.package} has been deleted" />
 	</target>
-
 
 	<target name="compile" depends="init">
 		<echo message="Compile target has been called" />
