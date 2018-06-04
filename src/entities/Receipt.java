@@ -89,11 +89,12 @@ public class Receipt implements ReceiptInterface {
 		String output = "";
 		int i = 1;
 
-		output += "OUTPUT\n";
-
 		for (Map.Entry<String, ShoppingBasket> sb: this.receipt.entrySet()) {
-			output += "\nOutput "+i+":\n";
-			output += sb.getValue().toString() + "\n";
+			output += "Output "+i+":\n";
+			if(this.receipt.size() == i)
+				output += sb.getValue().toString();
+			else
+				output += sb.getValue().toString() + "\n\n";
 			i++;
         }
 
