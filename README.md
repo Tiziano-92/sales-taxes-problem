@@ -13,7 +13,7 @@ This project contains the solution (implemented in Java language) for the Sales 
     Java HotSpot(TM) 64-Bit Server VM (build 25.66-b17, mixed mode)
     ```
 
-    If the kernel cannot start with an error along the lines of
+    If the kernel cannot start, with an error along the lines of
     ```text
     Exception in thread "main" java.lang.NoClassDefFoundError: jdk/jshell/JShellException
             ...
