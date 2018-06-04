@@ -1,10 +1,18 @@
+/**
+ * @author	Tiziano Antico
+ * This class extends the abstract class Item. In this way you can create an instance of an object
+ * which heritages the method of its subclass and creates of a new specific ones.
+ */
+
 package entities;
 
 import java.math.BigDecimal;
+
 import good_types.GoodType;
 import helper.Helper;
+import interfaces.GoodInterface;
 
-public class ImportedGood extends Item{
+public class ImportedGood extends Good implements GoodInterface {
 
 	final String IMPORT_DUTY_TAX = "0.05"; // which corresponds to a discount of 5 %
 	final String IMPORT_DUTY_BASIC_SALE_TAX = "0.15"; // which corresponds to a discount of 15 % (import duty tax + basic sale tax)

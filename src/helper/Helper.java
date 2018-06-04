@@ -1,3 +1,9 @@
+/**
+ * @author	Tiziano Antico
+ * Helper class which contains all the methods useful to be called in other classes,
+ * in order to manage math operations.
+ */
+
 package helper;
 
 import java.math.BigDecimal;
@@ -5,7 +11,7 @@ import java.math.BigDecimal;
 public class Helper {
 
 	/**
-	 * Method which compute the rounding up to the nearest 0.05 of a number
+	 * Method which computes the rounding up to the nearest 0.05 of a number
 	 * @param number
 	 * @param divisor
 	 * @return

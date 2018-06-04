@@ -1,95 +1,96 @@
 package entities;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-public class Receipt {
+import exceptions.ShoppingBasketNotFoundException;
+import interfaces.ReceiptInterface;
 
-	public List<Item> receipt = new ArrayList<Item>();
-	private BigDecimal totalSalesTax = BigDecimal.ZERO;
-	private BigDecimal totalAmount = BigDecimal.ZERO;
+public class Receipt implements ReceiptInterface {
+
+	public String idName;
+	private Map<String,ShoppingBasket> receipt;
 
 	/**
-	 * Getter for the totalSalesTax
+	 * Constructor method for Receipt without parameters
+	 */
+	public Receipt(){
+		receipt = new HashMap<String,ShoppingBasket>();
+	}
+
+	/**
+	 * Constructor method for Receipt with idName parameter
+	 * @param idName
+	 */
+	public Receipt(String idName){
+		this.idName = idName;
+		receipt = new HashMap<String,ShoppingBasket>();
+	}
+
+	/**
+	 * Add a shopping basket to the receipt
+	 * @param sb
 	 * @return
 	 */
-	public BigDecimal getTotalSalesTax() {
-		return totalSalesTax;
-	}
-
-	/**
-	 * Getter for the totalAmount
-	 * @return
-	 */
-	public BigDecimal getTotalAmount() {
-		return totalAmount;
-	}
-
-	/**
-	 * Setter for the totalSalesTax
-	 * @param totalSalesTax
-	 */
-	public void setTotalSalesTax(BigDecimal totalSalesTax) {
-		this.totalSalesTax = totalSalesTax;
-	}
-
-	/**
-	 * Setter for the totalAmount
-	 * @param totalAmount
-	 */
-	public void setTotalAmount(BigDecimal totalAmount) {
-		this.totalAmount = totalAmount;
-	}
-
-	/**
-	 * Add an Item to the receipt
-	 * @param item
-	 */
-	public void addItem(Item item){
-		receipt.add(item);
-	}
-
-	/**
-	 * Compute the total amount of taxes for this receipt
-	 * @return
-	 */
-	public BigDecimal computeTotalSalesTax(){
-		for (Item item : this.receipt){
-			this.setTotalSalesTax(this.totalSalesTax.add((item.getSalesTax()).multiply(new BigDecimal(item.getQuantity()))));
+	public boolean addShoppingBasket(ShoppingBasket sb){
+		if(this.receipt.containsKey(sb.getIdBasket())){
+			return false;
 		}
-		return this.totalSalesTax;
+		else
+		{
+			this.receipt.put(sb.getIdBasket(), sb);
+			return true;
+		}
 	}
 
 	/**
-	 * Compute the total amount of payment for this receipt
+	 * Remove the shopping basket from the receipt
+	 * @param idName
+	 * @return
+	 * @throws ShoppingBasketNotFoundException
+	 */
+	@Override
+	public boolean removeShoppingBasket(String idName) throws ShoppingBasketNotFoundException{
+		if(this.receipt.containsKey(idName)){
+			this.receipt.remove(idName);
+			return true;
+		}else throw new ShoppingBasketNotFoundException("ShoppingBasket with ID "+idName+" is not Found.");
+	}
+
+	/**
+	 * Get the shopping basket from the receipt, given the id
+	 * @param idName
+	 * @return
+	 * @throws ShoppingBasketNotFoundException
+	 */
+	public ShoppingBasket getShoppingBasketFromReceipt(String idName) throws ShoppingBasketNotFoundException {
+		if(this.receipt.containsKey(idName)){
+			return this.receipt.get(idName);
+		}else {
+			throw new ShoppingBasketNotFoundException("ShoppingBasket with ID "+idName+" is not Found.");
+		}
+	}
+
+	/**
+	 * Return the number of shopping basket in the receipt
 	 * @return
 	 */
-	public BigDecimal computeTotalAmount(){
-		for (Item item : this.receipt){
-			this.setTotalAmount(this.totalAmount.add((item.getPrice().multiply(new BigDecimal(item.getQuantity())))));
-		}
-		return this.totalAmount;
-	}
-
-
-	/**
-	 * Clean the receipt
-	 */
-	public void clean(){
-		this.receipt.clear();
-		this.totalSalesTax = BigDecimal.ZERO;
-		this.totalAmount = BigDecimal.ZERO;
+	public int receiptCount(){
+		return this.receipt.size();
 	}
 
 	@Override
 	public String toString() {
 		String output = "";
+		int i = 1;
 
-		for (Item item : this.receipt){
-			output += item.toString() + "\n";
-		}
-		output += "Sales Taxes: "+this.computeTotalSalesTax() + "\n" + "Total: "+this.computeTotalAmount();
+		output += "OUTPUT\n";
+
+		for (Map.Entry<String, ShoppingBasket> sb: this.receipt.entrySet()) {
+			output += "\nOutput "+i+":\n";
+			output += sb.getValue().toString() + "\n";
+			i++;
+        }
 
 		return output;
 	}

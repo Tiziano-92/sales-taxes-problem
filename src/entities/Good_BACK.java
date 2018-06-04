@@ -1,10 +1,15 @@
+/**
+ * @author	Tiziano Antico
+ * Abstract class which works as a "base" for the others, more specific classes which extends this one.
+ */
+
 package entities;
 
 import java.math.BigDecimal;
 
 import good_types.GoodType;
 
-public abstract class Item {
+public abstract class Good_BACK {
 
 	private String description;
 	private int quantity;
@@ -19,7 +24,7 @@ public abstract class Item {
 	 * @param price
 	 * @param goodtype
 	 */
-	public Item(String description, int quantity, BigDecimal price, GoodType goodtype) {
+	public Good_BACK(String description, int quantity, BigDecimal price, GoodType goodtype) {
 		this.description = description;
 		this.quantity = quantity;
 		this.price = price;
@@ -33,7 +38,7 @@ public abstract class Item {
 	 * @param quantity
 	 * @param price
 	 */
-	public Item(String description, int quantity, BigDecimal price) {
+	public Good_BACK(String description, int quantity, BigDecimal price) {
 		this.description = description;
 		this.quantity = quantity;
 		this.price = price;
