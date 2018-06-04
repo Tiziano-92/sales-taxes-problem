@@ -13,7 +13,7 @@ This project contains the solution (implemented in Java language) for the Sales 
     Java HotSpot(TM) 64-Bit Server VM (build 25.66-b17, mixed mode)
     ```
 
-    If the kernel cannot start with an error along the lines of
+    If the kernel cannot start, with an error along the lines of
     ```text
     Exception in thread "main" java.lang.NoClassDefFoundError: jdk/jshell/JShellException
             ...
@@ -22,18 +22,38 @@ This project contains the solution (implemented in Java language) for the Sales 
     ```
     then double check that `java` is referring to the command for the `jdk` and not the `jre`.
 
+2.  [Apache Ant] (http://ant.apache.org/)
+    
+    Ensure that the `ant` command is in the PATH. For example:
+    ```bash
+        > ant -version 
+        Apache Ant(TM) version 1.10.1"
+    ```
+
 ## Run Locally
-1. Clone this repo.
+1.  Clone this repo.
 
-   ```
-   git clone https://gitlab.com/tiziano92/sales-taxes-problem.git
-   ```
-2. Go into the project's folder.
+    ```bash
+        > git clone https://gitlab.com/tiziano92/sales-taxes-problem.git
+    ```
 
-   ```
-   cd sales-taxes-problem
-   ```
-3. 
+2.  Go into the project's folder.
+
+    ```bash
+        > cd sales-taxes-problem
+    ```
+    
+3.  Compile the project.
+
+    ```bash
+        > ant compile
+    ```
+    
+4.  Run the program
+
+    ```bash
+        > ant execute.main
+    ```
 
 ## Directory Tree
 
