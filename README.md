@@ -1,5 +1,5 @@
 # Sales taxes solution
-This project contains the solution (implemented in Java language) for the Sales Taxes problem which can be viewed at this link: https://github.com/xpeppers/sales-taxes-problem/blob/master/README.md
+This project contains the solution (implemented in Java language) for the Sales Taxes problem which can be viewed at [this link](https://github.com/xpeppers/sales-taxes-problem/blob/master/README.md).
 
 ## Requirements
 
@@ -22,7 +22,7 @@ This project contains the solution (implemented in Java language) for the Sales 
     ```
     then double check that `java` is referring to the command for the `jdk` and not the `jre`.
 
-2.  [Apache Ant] (http://ant.apache.org/)
+2.  [Apache Ant](http://ant.apache.org/)
     
     Ensure that the `ant` command is in the PATH. For example:
     ```bash
