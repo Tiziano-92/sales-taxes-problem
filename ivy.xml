@@ -15,7 +15,7 @@
    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
    KIND, either express or implied.  See the License for the
    specific language governing permissions and limitations
-   under the License.
+   under the License.    
 -->
 <ivy-module version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
@@ -24,9 +24,14 @@
         module="sales-taxes-problem"
         status="integration">
 	</info>
-
+	
+    <configurations>
+        <conf name="compile" description="Required to compile application"/>
+        <conf name="runtime" description="Additional run-time dependencies" extends="compile"/>
+        <conf name="test"    description="Required for test only" extends="runtime"/>
+    </configurations>
 	<dependencies>
         <dependency org="junit" name="junit" rev="4.12"/>
     </dependencies>
-
+	
 </ivy-module>
